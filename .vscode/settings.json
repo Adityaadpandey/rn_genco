@@ -1,0 +1,17 @@
+{
+  "editor.codeLensFontFamily": "'Droid Sans Mono', 'monospace', monospace",
+  "editor.experimentalInlineEdit.fontFamily": "'Droid Sans Mono', 'monospace', monospace",
+  "editor.inlayHints.fontFamily": "'Droid Sans Mono', 'monospace', monospace",
+  "editor.wordWrap": "on",
+  "editor.autoClosingComments": "always",
+  "editor.autoClosingBrackets": "languageDefined",
+  "editor.autoClosingDelete": "always",
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "workbench.productIconTheme": "Default",
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "workbench.tips.enabled": true,
+  "workbench.editor.centeredLayoutFixedWidth": false,
+  "workbench.editor.enablePreviewFromCodeNavigation": true,
+  "workbench.editor.enablePreviewFromQuickOpen": true,
+  "window.autoDetectColorScheme": false
+}
