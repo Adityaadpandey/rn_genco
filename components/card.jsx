@@ -1,33 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleSheet, Dimensions, FlatList } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import NotesContext from "../context/Notes"; // Import the context
+
 
 const { width, height } = Dimensions.get("window");
 
 export default function Card() {
-  const [notes, setNotes] = useState([]);
-
-  // useEffect(() => {
-  //   setNotes(data);
-  // }, []);
-
-  useEffect(() => {
-    const url =
-      "https://backendrn-production.up.railway.app/api/note/fetchallnotes";
-
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        const json = await response.json();
-        // console.log(json);
-        setNotes(json);
-      } catch (error) {
-        console.log("error", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { notes } = useContext(NotesContext); // Access notes from context
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
@@ -36,8 +16,9 @@ export default function Card() {
     </View>
   );
 
+
   return (
-    <GestureHandlerRootView style={{ flex: 2 }}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <FlatList
         data={notes}
         renderItem={renderItem}
@@ -45,6 +26,7 @@ export default function Card() {
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
+        // contentContainerStyle={{ alignItems: "center" }}
         contentContainerStyle={styles.container}
       />
     </GestureHandlerRootView>
@@ -55,7 +37,7 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    height,
+    // height,
   },
   card: {
     width: width * 0.8, // 80% of the screen width
@@ -75,7 +57,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: "#e6e6fa",
     fontWeight: "bold",
-    paddingBottom: 100,
+    paddingBottom: 50,
     marginBottom: 10,
   },
   content: {

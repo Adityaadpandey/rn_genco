@@ -1,14 +1,35 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { createContext, useState, useEffect } from "react";
+import { View, Text, StyleSheet, Dimensions, FlatList, TextInput, Button } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-const Notes_context = () => {
+const NotesContext = createContext([]);
+
+export const NotesProvider = ({ children }) => {
+  const [notes, setNotes] = useState([]);
+  const [category, setCategory] = useState("cse111_1"); // Default category
+
+  useEffect(() => {
+    const url = `https://backend-rn-ptjg.onrender.com/api/note/fetchallnotes?category=${category}`;
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+        const json = await response.json();
+        // console.log(json)
+        setNotes(json);
+      } catch (error) {
+        console.log("error", error);
+      }
+    };
+
+    fetchData();
+  }, [category]);
+
   return (
-    <View>
-      <Text>Notes_context</Text>
-    </View>
-  )
-}
+    <NotesContext.Provider value={{ notes, setNotes, category, setCategory }}>
+      {children}
+    </NotesContext.Provider>
+  );
+};
 
-export default Notes_context
-
-const styles = StyleSheet.create({})
+export default NotesContext;

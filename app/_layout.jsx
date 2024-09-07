@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect } from "react";
 import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
+import { NotesProvider } from "../context/Notes";
 
 const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({
@@ -33,10 +34,12 @@ const RootLayout = () => {
   }
   return (
     <>
+      <NotesProvider>
       <Stack>
         <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
+        </Stack>
+      </NotesProvider >
     </>
   );
 };

@@ -1,0 +1,112 @@
+[
+    {
+        "title": "Basic Structure of Computer",
+        "content": "Covers the main components of a computer including the CPU, motherboard, and power supply. \n\nThese components are essential for the basic functioning of the computer.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Computer Peripherals",
+        "content": "Peripheral devices extend the functionality of a computer. \n\nExamples include the mouse, keyboard, and monitor, which allow interaction with the system.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Types of Computer Peripherals",
+        "content": "Computer peripherals are categorized based on their functions: \n\n1. Input devices (mouse, microphone) \n\n2. Output devices (monitor, speaker) \n\n3. Input/Output and storage devices (RAM, DVD-ROM)",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Input Devices",
+        "content": "Input devices send data to the computer for processing. \n\nExamples include the mouse, which controls the cursor, and the microphone, which inputs audio data.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Output Devices",
+        "content": "Output devices receive data from the computer and display or output information. \n\nExamples include monitors for graphical display and speakers for audio output.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Memory Overview",
+        "content": "Memory stores data and instructions temporarily (RAM) or permanently (ROM, hard drives). \n\nMemory is divided into primary memory (RAM, ROM) and secondary storage (SSDs, HDDs).",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Random Access Memory (RAM)",
+        "content": "RAM is volatile memory that stores data temporarily while programs are running. \n\nIt is further classified into SRAM (Static RAM) and DRAM (Dynamic RAM).",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Read Only Memory (ROM)",
+        "content": "ROM is non-volatile memory that stores essential instructions for the computer's boot process. \n\nTypes include PROM, EPROM, and EEPROM, which vary in how data can be written or erased.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Secondary Storage Devices",
+        "content": "Secondary storage devices, such as SSDs and HDDs, provide long-term storage for data and programs. \n\nThey are used for storing backups, operating systems, and applications.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "System Configuration",
+        "content": "System configuration refers to the hardware, software, and processes that define how a computer functions. \n\nIt includes details like installed devices, operating systems, and system settings.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Hard Disk Drives (HDD)",
+        "content": "HDDs use spinning magnetic platters to store data. \n\nThey are slower than SSDs but offer large storage capacities at a lower cost.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Solid-State Drives (SSD)",
+        "content": "SSDs use flash memory with no moving parts, making them faster and more reliable than HDDs. \n\nThey are ideal for tasks that require quick data access, such as gaming and video editing.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Processor and Threads",
+        "content": "The processor (CPU) is responsible for executing instructions. \n\nThreads allow the processor to handle multiple tasks simultaneously, improving multitasking performance.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "BIOS Configuration",
+        "content": "BIOS is firmware stored on ROM that initializes and tests hardware during the boot process. \n\nIt ensures the system is ready to load the operating system.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "PC Connection Interfaces",
+        "content": "Various interfaces are used to connect peripherals and devices to a computer, such as USB, HDMI, and SATA. \n\nThese interfaces allow for data transfer and device communication.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "RAID",
+        "content": "RAID (Redundant Array of Independent Disks) uses multiple disks to improve storage performance and provide fault tolerance. \n\nDifferent RAID configurations offer varying levels of speed and reliability.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Graphics Processing Unit (GPU)",
+        "content": "GPUs are specialized processors for rendering graphics and video. \n\nThey are essential for tasks like gaming, content creation, and AI computations.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Computer Languages",
+        "content": "Computer languages include: \n\n1. Machine language (binary code) \n\n2. Assembly language (low-level code) \n\n3. High-level languages like C and FORTRAN, which are more human-readable.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Steps in Program Development",
+        "content": "The program development process includes: \n\n1. Writing the code \n\n2. Compiling the code into machine language \n\n3. Assembling the code \n\n4. Linking the program for execution \n\n5. Loading the program into memory for execution.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Compiler",
+        "content": "A compiler translates high-level programming languages into machine code that the computer can execute. \n\nIt reads the entire program at once, generating object code or an executable file.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Interpreter",
+        "content": "An interpreter executes high-level language code line by line, translating each statement as it goes. \n\nIt is typically used for scripting languages but is slower than a compiler.",
+        "category": "cse111_1"
+    },
+    {
+        "title": "Assembler",
+        "content": "An assembler converts assembly language code into machine code. \n\nIt produces object files, which are then linked to create an executable program.",
+        "category": "cse111_1"
+    }
+]
