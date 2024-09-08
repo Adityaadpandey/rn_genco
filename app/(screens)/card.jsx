@@ -1,13 +1,12 @@
 import React, { useContext } from "react";
-import { View, Text, StyleSheet, Dimensions, FlatList } from "react-native";
+import { Dimensions, FlatList, StyleSheet, Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import NotesContext from "../context/Notes"; // Import the context
-
+import NotesContext from "../../context/Notes"; // Import the context
 
 const { width, height } = Dimensions.get("window");
 
 export default function Card() {
-  const { notes } = useContext(NotesContext); // Access notes from context
+  const { notes, category } = useContext(NotesContext); // Access notes and category from context
 
   const renderItem = ({ item }) => (
     <View style={styles.card}>
@@ -16,19 +15,26 @@ export default function Card() {
     </View>
   );
 
-
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <FlatList
-        data={notes}
-        renderItem={renderItem}
-        keyExtractor={(item) => item._id}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        // contentContainerStyle={{ alignItems: "center" }}
-        contentContainerStyle={styles.container}
-      />
+      {category ? ( // Only show notes if a category is selected
+        <>
+          <Text style={styles.categoryHeader}>Category: {category}</Text>
+          <FlatList
+            data={notes}
+            renderItem={renderItem}
+            keyExtractor={(item) => item._id}
+            horizontal
+            pagingEnabled
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.container}
+          />
+        </>
+      ) : (
+        <Text style={styles.noCategoryText}>
+          Select a category to view notes
+        </Text>
+      )}
     </GestureHandlerRootView>
   );
 }
@@ -37,11 +43,10 @@ const styles = StyleSheet.create({
   container: {
     alignItems: "center",
     justifyContent: "center",
-    // height,
   },
   card: {
     width: width * 0.8, // 80% of the screen width
-    height: height * 0.7, // 50% of the screen height
+    height: height * 0.7, // 70% of the screen height
     backgroundColor: "#696969",
     borderRadius: 10,
     justifyContent: "center",
@@ -64,8 +69,18 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "white",
     paddingBottom: 100,
-    // marginBottom: 10,
-    // textAlign: 'center',
     paddingHorizontal: 20,
+  },
+  categoryHeader: {
+    fontSize: 20,
+    textAlign: "center",
+    marginVertical: 10,
+    color: "#333",
+  },
+  noCategoryText: {
+    textAlign: "center",
+    fontSize: 16,
+    marginVertical: 20,
+    color: "#666",
   },
 });

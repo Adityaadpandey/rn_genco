@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, StyleSheet, Dimensions, Button } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
+import React, { useState, useEffect, useContext } from "react";
+import { View, Text, StyleSheet, Button } from "react-native";
+import NotesContext from "../../context/Notes"; // Import the context
+import { router,useRouter } from "expo-router";
 
-const { width, height } = Dimensions.get("window");
+export default function CardCategory() {
+  const { setCategory } = useContext(NotesContext); // Access setCategory from context
+  const [ccategory, setCcategory] = useState([]); // Make sure to initialize as an empty array
+  const [selectedCategory, setSelectedCategory] = useState(null); // To track the selected category
+  const router = useRouter(); 
 
-export default function card_category() {
-  const [ccategory, setCcategory] = useState([null]);
 
   useEffect(() => {
     const url = "https://backend-rn-ptjg.onrender.com/api/note/categories";
@@ -14,8 +17,7 @@ export default function card_category() {
       try {
         const response = await fetch(url);
         const json = await response.json();
-        console.log(json);
-        setCcategory(json);
+        setCcategory(json.categories); // Expecting the categories in this format
       } catch (error) {
         console.log("error", error);
       }
@@ -24,32 +26,45 @@ export default function card_category() {
     fetchData();
   }, []);
 
-  const categories = ccategory.categories || [];
+  const handleButtonPress = (category) => {
+    setCategory(category); // Update the category in context
+    setSelectedCategory(category); // Track selected category
+    router.push('/card')
+    
+  };
 
   return (
     <View style={styles.container}>
-      {categories.length > 0 ? (
-        categories.map((category, index) => (
+      {ccategory.length > 0 ? (
+        ccategory.map((category, index) => (
           <Button
             key={index}
             title={category}
-            onPress={() => handleButtonPress(category)}
+            onPress={() => handleButtonPress(category)
+              
+            } // On pressing, update the selected category
           />
         ))
       ) : (
         <Text>No categories available</Text>
       )}
+
+      {selectedCategory && (
+        <Text style={styles.selectedText}>Selected Category: {selectedCategory}</Text>
+      )}
     </View>
   );
 }
-const handleButtonPress = (category) => {
-  console.log(`You pressed: ${category}`);
-};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  selectedText: {
+    marginTop: 20,
+    fontSize: 18,
+    color: "blue",
   },
 });
