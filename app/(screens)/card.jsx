@@ -2,12 +2,13 @@ import React, { useContext } from "react";
 import { Dimensions, FlatList, StyleSheet, Text, View } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import NotesContext from "../../context/Notes"; // Import the context
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const { width, height } = Dimensions.get("window");
 
 export default function Card() {
   const { notes, category } = useContext(NotesContext); // Access notes and category from context
-
+console.log("Card")
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <Text style={styles.title}>{item.title}</Text>
@@ -17,9 +18,11 @@ export default function Card() {
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
+      <Text style={styles.categoryHeader}>{category}</Text>
+
       {category ? ( // Only show notes if a category is selected
         <>
-          <Text style={styles.categoryHeader}>Category: {category}</Text>
           <FlatList
             data={notes}
             renderItem={renderItem}
@@ -33,21 +36,25 @@ export default function Card() {
       ) : (
         <Text style={styles.noCategoryText}>
           Select a category to view notes
-        </Text>
-      )}
+          </Text>
+
+        )}
+        </SafeAreaView>
     </GestureHandlerRootView>
+    
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    backgroundColor: "#F2F2F2",
     justifyContent: "center",
   },
   card: {
     width: width * 0.8, // 80% of the screen width
     height: height * 0.7, // 70% of the screen height
-    backgroundColor: "#696969",
+    backgroundColor: "#4A4A4A",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
@@ -60,7 +67,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    color: "#e6e6fa",
+    color: "#F5A623",
     fontWeight: "bold",
     paddingBottom: 50,
     marginBottom: 10,
@@ -74,6 +81,10 @@ const styles = StyleSheet.create({
   categoryHeader: {
     fontSize: 20,
     textAlign: "center",
+    marginTop: 20,
+    marginBottom: 60,
+    fontWeight: "bold",
+    textTransform: "uppercase",
     marginVertical: 10,
     color: "#333",
   },
