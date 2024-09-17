@@ -81,6 +81,17 @@ const Home = () => {
             Support you with Personal Things.
           </Text>
         </Pressable>
+        <Pressable
+          onPress={() => router.push("/sudoku")}
+          className="w-5/12 m-2 bg-white p-6 rounded-lg shadow-lg justify-center items-center"
+        >
+          <Text className="text-xl font-semibold text-blue-600">
+          Sudoku Game
+          </Text>
+          <Text className="text-gray-500 text-base mt-2 text-center">
+            Great Way to relax and get good at Maths.
+          </Text>
+        </Pressable>
         
       </View>
     </ScrollView>

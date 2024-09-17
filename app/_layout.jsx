@@ -40,6 +40,7 @@ const RootLayout = () => {
         <Stack.Screen name="(progress)" options={{ headerShown: false }} />       
         <Stack.Screen name="(quiz)" options={{ headerShown: false }} />       
         <Stack.Screen name="(ai_advisor)" options={{ headerShown: false }} />       
+        <Stack.Screen name="(sudoku)" options={{ headerShown: false }} />       
         </Stack>
       </NotesProvider>
     </GlobalProvider>

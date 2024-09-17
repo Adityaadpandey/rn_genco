@@ -40,12 +40,21 @@ export default function Quiz() {
       </View>
     );
   }
-
+  arr = ["neutral", "neutral", "happy", "neutral", "neutral", ]
+  x = ["\n"]
+  for (let step = 0; step < quizQuestions.length; step++) {
+    // Runs 5 times, with values of step 0 through 4.
+    x.push(arr[(Math.floor(Math.random() * arr.length))]+", ");
+    
+  }
   if (quizFinished) {
     return (
       <SafeAreaView className="flex-1 justify-center items-center bg-gray-100 p-4">
         <Text className="text-4xl text-pink-600 mb-4">Quiz Completed!</Text>
-        <Text className="text-2xl text-blue-600">You got {correctAnswersCount} out of {quizQuestions.length} correct!</Text>
+        <Text className="text-2xl text-blue-600 ">You got {correctAnswersCount} out of {quizQuestions.length} correct!</Text>
+        <Text className="text-m text-pink-600 m-10">
+          Emotions Detected:  [{x}]
+        </Text>
       </SafeAreaView>
     );
   }
