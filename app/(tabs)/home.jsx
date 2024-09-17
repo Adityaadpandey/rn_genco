@@ -40,7 +40,7 @@ const Home = () => {
 
         {/* Second Component */}
         <Pressable
-          onPress={() => router.push("/quiz")}
+          onPress={() => router.push("/QuizCategory")}
           className="w-5/12 m-2 bg-white p-6 rounded-lg shadow-lg justify-center items-center"
         >
           <Text className="text-xl font-semibold text-blue-600">Quizzes</Text>

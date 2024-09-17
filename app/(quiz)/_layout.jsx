@@ -5,7 +5,9 @@ import { Stack } from 'expo-router'
 const _layout = () => {
   return (
     <Stack>
-        <Stack.Screen name="quiz" options={{ headerShown: false }}/>
+        <Stack.Screen name="Quiz" options={{ headerShown: false }}/>
+        <Stack.Screen name="QuizCategory" options={{ headerShown: false }}/>
+        <Stack.Screen name="QuizSubCategory" options={{ headerShown: false }}/>
      </Stack>
   )
 }
