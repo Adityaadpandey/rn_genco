@@ -2,6 +2,10 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import React, { useEffect } from "react";
 import { NotesProvider } from "../context/Notes";
+import { GlobalProvider } from "../context/GlobalContext"; 
+
+// SplashScreen.preventAutoHideAsync();
+
 
 const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({
@@ -18,29 +22,24 @@ const RootLayout = () => {
 
   useEffect(() => {
     if (error) throw error;
-
     if (fontsLoaded) {
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded, error]);
 
-  if (!fontsLoaded) {
-    return null;
-  }
+  if (!fontsLoaded) return null;
 
-  if (!fontsLoaded && !error) {
-    return null;
-  }
   return (
-    <>
+    <GlobalProvider>
       <NotesProvider>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="(screens)" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />            
+        <Stack.Screen name="(screens)" options={{ headerShown: false }} />            
         </Stack>
       </NotesProvider>
-    </>
+    </GlobalProvider>
   );
 };
 

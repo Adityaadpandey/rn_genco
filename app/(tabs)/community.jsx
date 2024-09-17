@@ -11,4 +11,4 @@ const community = () => {
 
 export default community
 
-const styles = StyleSheet.create({})
+// const styles = StyleSheet.create({})

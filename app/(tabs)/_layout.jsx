@@ -113,4 +113,4 @@ const TabsLayout = () => {
 };
 export default TabsLayout;
 
-const styles = StyleSheet.create({});
+// const styles = StyleSheet.create({});
