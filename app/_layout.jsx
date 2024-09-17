@@ -36,7 +36,10 @@ const RootLayout = () => {
           <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />            
-        <Stack.Screen name="(screens)" options={{ headerShown: false }} />            
+        <Stack.Screen name="(screens)" options={{ headerShown: false }} />       
+        <Stack.Screen name="(progress)" options={{ headerShown: false }} />       
+        <Stack.Screen name="(quiz)" options={{ headerShown: false }} />       
+        <Stack.Screen name="(ai_advisor)" options={{ headerShown: false }} />       
         </Stack>
       </NotesProvider>
     </GlobalProvider>
