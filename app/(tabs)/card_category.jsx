@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
-import { View, Text, Pressable } from "react-native";
+import { useState, useEffect, useContext } from "react";
+import { View, Text, Pressable, SafeAreaView,ActivityIndicator } from "react-native";
 import NotesContext from "../../context/Notes"; // Import the context
 import { router, useRouter } from "expo-router";
 
 export default function CardCategory() {
   const { setCategory } = useContext(NotesContext); // Access setCategory from context
   const [ccategory, setCcategory] = useState([]); // Make sure to initialize as an empty array
-  const [selectedCategory, setSelectedCategory] = useState(null); // To track the selected category
   const router = useRouter();
+  const [loading, setLoading] = useState(true); // State to manage loading
+
 
   useEffect(() => {
     const url = "https://backend-rn-ptjg.onrender.com/api/note/categories";
@@ -19,6 +20,8 @@ export default function CardCategory() {
         setCcategory(json.categories); // Expecting the categories in this format
       } catch (error) {
         console.log("error", error);
+      } finally {
+        setLoading(false); // Stop the loader
       }
     };
 
@@ -27,12 +30,24 @@ export default function CardCategory() {
 
   const handleButtonPress = (category) => {
     setCategory(category); // Update the category in context
-    setSelectedCategory(category); // Track selected category
-    router.push("/card");
+    router.push("/sub_categories"); // Navigate to the sub-category page
   };
 
+  if (loading) {
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size="large" color="#00ff00" />
+        <Text className="text-lg mt-4 text-green-600">Loading Categories...</Text>
+      </View>
+    );
+  }
   return (
+    <>
+      <SafeAreaView className="flex-1 justify-center items-center bg-gray-100 p-4">
+        <Text className="text-4xl text-pink-600 ">Choose a category</Text>
+      </SafeAreaView>
     <View className="flex-1 justify-center items-center bg-gray-100 p-4">
+
       {ccategory.length > 0 ? (
         <View className="w-full flex flex-wrap flex-row justify-center">
           {ccategory.map((category, index) => (
@@ -48,12 +63,7 @@ export default function CardCategory() {
       ) : (
         <Text className="text-red-500">No categories available</Text>
       )}
-
-      {selectedCategory && (
-        <Text className="mt-5 text-lg text-blue-500">
-          Selected Category: {selectedCategory}
-        </Text>
-      )}
-    </View>
+      </View>
+      </>
   );
 }

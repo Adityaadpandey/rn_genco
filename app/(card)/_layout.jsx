@@ -14,6 +14,7 @@ const TabsLayout = () => {
     <>
       <Stack>
         <Stack.Screen name="card" options={{ headerShown: false }}/>
+        <Stack.Screen name="sub_categories" options={{ headerShown: false }}/>
      </Stack>
 
       {/* <Loader isLoading={loading} /> */}

@@ -78,7 +78,7 @@ export default function Sign_in ()  {
               Don't have an account?
             </Text>
             <Link
-              href="/sign-up"
+              href="/Sign_up"
               className="text-lg font-psemibold text-secondary"
             >
               Signup

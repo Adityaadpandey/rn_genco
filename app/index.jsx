@@ -38,16 +38,16 @@ export default function App() {
             </Text>
           </View>
 
-          {/* <CustomButton
+          <CustomButton
             title=" Let's Start"
             handlePress={() => router.push("/home")}
             containerStyles="w-full mt-5"
-          /> */}
-          <CustomButton
+          />
+          {/* <CustomButton
             title=" Let's Start"
             handlePress={() => router.push("/Sign_in")}
             containerStyles="w-full mt-5"
-          />
+          /> */}
         </View>
         {/* </ScrollView> */}
     </SafeAreaView>
