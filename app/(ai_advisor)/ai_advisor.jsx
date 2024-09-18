@@ -1,19 +1,30 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, ScrollView } from 'react-native';
-import { useGoogleGenerativeAI } from '@google/generative-ai';
-import { useTailwind } from 'nativewind';
+import React, { useState } from "react";
+import { View, Text, TextInput, ActivityIndicator, TouchableOpacity } from "react-native";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+// import { useTailwind } from "nativewind";
+
+const apiKey = "AIzaSyCmZ6Wa57GndhZovM9KP2cuAvDDXakEo6Q"; // Replace with your API key
+const genAI = new GoogleGenerativeAI(apiKey);
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 export default function AIAdvisor() {
-  const { tailwind } = useTailwind();
-  const [input, setInput] = useState('');
-  const [response, setResponse] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [userInput, setUserInput] = useState(""); // Store user's input
+  const [responseText, setResponseText] = useState(""); // Store AI response
+  const [loading, setLoading] = useState(false); // Show loading indicator
+  const [error, setError] = useState(""); // Handle errors
+  // const tailwind = useTailwind();
 
-  const handleGenerateResponse = async () => {
+  // Fetch response from the AI model based on user input
+  const fetchResponse = async () => {
+    if (!userInput.trim()) {
+      setError("Please enter a prompt.");
+      return;
+    }
+
     setLoading(true);
-    const genAI = useGoogleGenerativeAI("AIzaSyCmZ6Wa57GndhZovM9KP2cuAvDDXakEo6Q");
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
-
+    setError("");
+    setResponseText("");
+    
     try {
       const chatSession = model.startChat({
         generationConfig: {
@@ -21,62 +32,57 @@ export default function AIAdvisor() {
           topP: 0.95,
           topK: 64,
           maxOutputTokens: 8192,
-          responseMimeType: 'text/plain',
+          responseMimeType: "text/plain",
         },
         history: [],
       });
 
-      const result = await chatSession.sendMessage(input);
-      setResponse(result.response.text());
+      const result = await chatSession.sendMessage(userInput.trim());
+      setResponseText(result.response.text());
     } catch (error) {
-      console.error('Error generating response:', error);
-      setResponse('An error occurred while generating the response.');
+      setError("Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <View style={tailwind('flex-1 justify-center items-center p-4')}>
-      <Text style={tailwind('text-2xl font-bold mb-4 text-blue-600')}>
-        AI Advisor
-      </Text>
+    <View className="flex-1 justify-center items-center p-4 bg-gray-100">
+      {/* User input field */}
+      <TextInput
+        value={userInput}
+        onChangeText={setUserInput}
+        placeholder="Enter your question here..."
+        className="w-full max-w-lg p-4 mb-4 bg-white border border-gray-300 rounded-lg"
+      />
 
-      <ScrollView style={tailwind('w-full bg-gray-100 rounded-lg p-4')}>
-        {loading ? (
-          <ActivityIndicator size="large" color="#00ff00" />
-        ) : (
-          <Text style={tailwind('text-base text-gray-800')}>
-            {response.split('\n').map((line, index) => (
-              <Text key={index}>
-                {line.startsWith('**') ? (
-                  <Text style={tailwind('font-bold text-blue-800')}>
-                    {line.replace(/\*\*/g, '')}
-                  </Text>
-                ) : line.startsWith('*') ? (
-                  <Text style={tailwind('italic text-green-600')}>
-                    {line.replace(/\*/g, '')}
-                  </Text>
-                ) : (
-                  <Text>{line}</Text>
-                )}
-                {'\n'}
-              </Text>
-            ))}
+      {/* Button to submit the input */}
+      <TouchableOpacity
+        onPress={fetchResponse}
+        className="bg-blue-500 p-4 rounded-lg mb-4"
+      >
+        <Text className="text-white text-lg font-semibold">Submit</Text>
+      </TouchableOpacity>
+
+      {/* Loading indicator */}
+      {loading && (
+        <ActivityIndicator size="large" color="#00ff00" />
+      )}
+
+      {/* Error message */}
+      {error && (
+        <Text className="text-red-500 text-center">{error}</Text>
+      )}
+
+      {/* Display AI response */}
+      {responseText && (
+        <View className="w-full max-w-lg p-4 bg-white rounded-lg shadow-lg">
+          <Text className="text-xl font-bold mb-2">AI Response:</Text>
+          <Text className="text-gray-800">
+            {responseText}
           </Text>
-        )}
-      </ScrollView>
-
-      <View style={tailwind('mt-4')}>
-        <Text
-          style={tailwind(
-            'text-blue-500 underline cursor-pointer',
-          )}
-          onPress={handleGenerateResponse}
-        >
-          Generate Response
-        </Text>
-      </View>
+        </View>
+      )}
     </View>
   );
 }

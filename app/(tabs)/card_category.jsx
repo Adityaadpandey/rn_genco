@@ -43,10 +43,10 @@ export default function CardCategory() {
   }
   return (
     <>
-      <SafeAreaView className="flex-1 justify-center items-center bg-gray-100 p-4">
+      <SafeAreaView className="flex-1 justify-center items-center bg-thm p-4">
         <Text className="text-4xl text-pink-600 ">Choose a category</Text>
       </SafeAreaView>
-    <View className="flex-1 justify-center items-center bg-gray-100 p-4">
+    <View className="flex-1 justify-center items-center bg-thm p-4">
 
       {ccategory.length > 0 ? (
         <View className="w-full flex flex-wrap flex-row justify-center">

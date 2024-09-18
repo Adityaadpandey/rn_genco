@@ -11,7 +11,7 @@ const Home = () => {
   console.log("nice" + user);
 
   return (
-    <ScrollView className="flex-1 bg-gray-100 ">
+    <ScrollView className="flex-1 bg-thm ">
       {/* Banner */}
       <View className="w-full h-48 bg-blue-600 justify-center items-center mb-6">
         <Image
@@ -19,7 +19,7 @@ const Home = () => {
           className="w-full h-full object-cover opacity-80"
         />
         <Text className="absolute text-3xl mt-25px font-bold text-white">
-          Welcome to Your App!
+          Welcome to Genco!
         </Text>
       </View>
 

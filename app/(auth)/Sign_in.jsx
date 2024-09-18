@@ -33,7 +33,7 @@ export default function Sign_in ()  {
   };
 
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeAreaView className="bg-primary h-full text-white">
       <ScrollView>
         <View
           className="w-full flex justify-center h-full px-4 my-6"
@@ -74,7 +74,7 @@ export default function Sign_in ()  {
           />
 
           <View className="flex justify-center pt-5 flex-row gap-2">
-            <Text className="text-lg text-gray-100 font-pregular">
+            <Text className="text-lg text-white font-pregular">
               Don't have an account?
             </Text>
             <Link
