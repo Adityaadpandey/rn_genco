@@ -43,7 +43,7 @@ const Home = () => {
           onPress={() => router.push("/QuizCategory")}
           className="w-5/12 m-2 bg-white p-6 rounded-lg shadow-lg justify-center items-center"
         >
-          <Text className="text-xl font-semibold text-blue-600">Quizzes</Text>
+          <Text className="text-xl font-semibold text-blue-600">Boss Fights</Text>
           <Text className="text-gray-500 text-base mt-2 text-center">
             Take quizzes to test your knowledge.
           </Text>
@@ -54,7 +54,7 @@ const Home = () => {
           onPress={() => router.push("/community")}
           className="w-5/12 m-2 bg-white p-6 rounded-lg shadow-lg justify-center items-center"
         >
-          <Text className="text-xl font-semibold text-blue-600">Community</Text>
+          <Text className="text-xl font-semibold text-blue-600">The Guild</Text>
           <Text className="text-gray-500 text-base mt-2 text-center">
             Join the community and engage with others.
           </Text>
@@ -65,7 +65,7 @@ const Home = () => {
           onPress={() => router.push("/progress")}
           className="w-5/12 m-2 bg-white p-6 rounded-lg shadow-lg justify-center items-center"
         >
-          <Text className="text-xl font-semibold text-blue-600">Progress</Text>
+          <Text className="text-xl font-semibold text-blue-600">Journey Map</Text>
           <Text className="text-gray-500 text-base mt-2 text-center">
             Track your learning progress and achievements.
           </Text>
@@ -75,7 +75,7 @@ const Home = () => {
           className="w-5/12 m-2 bg-white p-6 rounded-lg shadow-lg justify-center items-center"
         >
           <Text className="text-xl font-semibold text-blue-600">
-            AI Advisor
+          Mentor Wizard
           </Text>
           <Text className="text-gray-500 text-base mt-2 text-center">
             Support you with Personal Things.
@@ -86,7 +86,7 @@ const Home = () => {
           className="w-5/12 m-2 bg-white p-6 rounded-lg shadow-lg justify-center items-center"
         >
           <Text className="text-xl font-semibold text-blue-600">
-          Sudoku Game
+          Brain Brawler
           </Text>
           <Text className="text-gray-500 text-base mt-2 text-center">
             Great Way to relax and get good at Maths.
